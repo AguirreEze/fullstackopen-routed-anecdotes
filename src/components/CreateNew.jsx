@@ -20,6 +20,12 @@ const CreateNew = ({ addNew, notification }) => {
     notification(`A new anecdote ${content.value} created!`)
     history.push('/')
   }
+  const resetAll = (e) => {
+    e.preventDefault()
+    content.reset()
+    author.reset()
+    info.reset()
+  }
 
   return (
     <div>
@@ -37,7 +43,8 @@ const CreateNew = ({ addNew, notification }) => {
           url for more info
           <input name='info' value={info.value} onChange={info.onChange} />
         </div>
-        <button>create</button>
+        <button type={'submit'}>create</button>
+        <button onClick={e => resetAll(e)}>reset</button>
       </form>
     </div>
   )
